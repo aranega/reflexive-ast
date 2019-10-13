@@ -1,5 +1,5 @@
 Class {
-	#name : #RefSlot,
+	#name : #ReferenceRelationSlot,
 	#superclass : #InstanceVariableSlot,
 	#instVars : [
 		'#targetClass',
@@ -12,13 +12,13 @@ Class {
 }
 
 { #category : #'instance creation' }
-RefSlot class >> named: aSymbol inverse: anInverseSymbol inClass: aTargetClassOrSymbol [ 
+ReferenceRelationSlot class >> named: aSymbol inverse: anInverseSymbol inClass: aTargetClassOrSymbol [ 
 
 	^(super named: aSymbol) inverse: anInverseSymbol inClass: aTargetClassOrSymbol 
 ]
 
 { #category : #comparing }
-RefSlot >> = anObject [ 
+ReferenceRelationSlot >> = anObject [ 
 
 	^super = anObject and: [ 
 		self targetClassName = anObject targetClassName and: [ 
@@ -28,7 +28,7 @@ RefSlot >> = anObject [
 ]
 
 { #category : #internal }
-RefSlot >> addAssociationFrom: ownerObject to: otherObject [
+ReferenceRelationSlot >> addAssociationFrom: ownerObject to: otherObject [
 	"A new reference from <ownerObject> to <otherObject> is created. Here we update the other 
 	side of the association. If the other side is a ToOne association this means that an other
 	association may have to be removed first."
@@ -45,19 +45,19 @@ RefSlot >> addAssociationFrom: ownerObject to: otherObject [
 ]
 
 { #category : #internal }
-RefSlot >> checkValue: aValue [
+ReferenceRelationSlot >> checkValue: aValue [
 
 	(aValue isKindOf: self targetClass)
 		ifFalse: [ self error: 'Invalid value' ]
 ]
 
 { #category : #accessing }
-RefSlot >> containment: aBoolean [
+ReferenceRelationSlot >> containment: aBoolean [
 	containment := aBoolean
 ]
 
 { #category : #'code generation' }
-RefSlot >> emitStore: aMethodBuilder [
+ReferenceRelationSlot >> emitStore: aMethodBuilder [
 	"copy of #emitStore from Slot as my superclass has overriden it"
 	| tempName |
 	tempName := '0slotTempForStackManipulation'.
@@ -72,13 +72,13 @@ RefSlot >> emitStore: aMethodBuilder [
 ]
 
 { #category : #testing }
-RefSlot >> hasInverse [
+ReferenceRelationSlot >> hasInverse [
 
 	^inverseName notNil
 ]
 
 { #category : #comparing }
-RefSlot >> hasSameDefinitionAs: otherSlot [
+ReferenceRelationSlot >> hasSameDefinitionAs: otherSlot [
 	"need to implement as superclass implements it"
 	^ (super hasSameDefinitionAs: otherSlot) 
 		and: [ self targetClassName = otherSlot targetClassName 
@@ -86,62 +86,62 @@ RefSlot >> hasSameDefinitionAs: otherSlot [
 ]
 
 { #category : #comparing }
-RefSlot >> hash [
+ReferenceRelationSlot >> hash [
 	^ ((self species hash bitXor: self name hash) 
 			bitXor: (self index ifNil: [ 0 ])) 
 				bitXor: self targetClassName hash
 ]
 
 { #category : #initialization }
-RefSlot >> inClass: aTargetClassOrSymbol [
+ReferenceRelationSlot >> inClass: aTargetClassOrSymbol [
 
 	targetClass := aTargetClassOrSymbol
 ]
 
 { #category : #initialization }
-RefSlot >> inClass: aTargetClassOrSymbol containment: isContainment [
+ReferenceRelationSlot >> inClass: aTargetClassOrSymbol containment: isContainment [
 
 	targetClass := aTargetClassOrSymbol.
 	containment := isContainment
 ]
 
 { #category : #initialization }
-RefSlot >> initialize [
+ReferenceRelationSlot >> initialize [
 	super initialize.
 	containment := false
 ]
 
 { #category : #initialization }
-RefSlot >> inverse: anInverseSymbol inClass: aTargetClassOrSymbol [
+ReferenceRelationSlot >> inverse: anInverseSymbol inClass: aTargetClassOrSymbol [
 	self inClass: aTargetClassOrSymbol.
 	inverseName := anInverseSymbol
 ]
 
 { #category : #accessing }
-RefSlot >> inverseName [
+ReferenceRelationSlot >> inverseName [
 
 	^inverseName
 ]
 
 { #category : #accessing }
-RefSlot >> inverseSlot [
+ReferenceRelationSlot >> inverseSlot [
 
 	^inverseSlot ifNil: [ self linkUp. inverseSlot ]
 ]
 
 { #category : #accessing }
-RefSlot >> isContainment [
+ReferenceRelationSlot >> isContainment [
 	^ containment
 ]
 
 { #category : #testing }
-RefSlot >> isToOneSlot [
+ReferenceRelationSlot >> isToOneSlot [
 
 	^false
 ]
 
 { #category : #initialization }
-RefSlot >> linkUp [
+ReferenceRelationSlot >> linkUp [
 
 	inverseSlot := self targetClass slotNamed: inverseName.
 	(inverseSlot isKindOf: RelationSlot)
@@ -152,7 +152,7 @@ RefSlot >> linkUp [
 ]
 
 { #category : #printing }
-RefSlot >> printOn: aStream [
+ReferenceRelationSlot >> printOn: aStream [
 	aStream 
 		store: self name;
 		nextPutAll: ' => ';
@@ -175,7 +175,7 @@ RefSlot >> printOn: aStream [
 ]
 
 { #category : #internal }
-RefSlot >> removeAssociationFrom: ownerObject to: otherObject [
+ReferenceRelationSlot >> removeAssociationFrom: ownerObject to: otherObject [
 	"A reference from <ownerObject> to <otherObject> is removed. Here we update the other 
 	side of the association. If the other side is a ToOne association set the value to nil,
 	for ToMany associations remove <ownerObject> from the collection." 
@@ -186,7 +186,7 @@ RefSlot >> removeAssociationFrom: ownerObject to: otherObject [
 ]
 
 { #category : #accessing }
-RefSlot >> targetClass [
+ReferenceRelationSlot >> targetClass [
 
 	targetClass isSymbol
 		ifTrue: [ 
@@ -197,7 +197,7 @@ RefSlot >> targetClass [
 ]
 
 { #category : #accessing }
-RefSlot >> targetClassName [
+ReferenceRelationSlot >> targetClassName [
 
 	^targetClass isSymbol
 		ifTrue: [ targetClass ]

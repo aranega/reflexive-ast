@@ -1,6 +1,6 @@
 Class {
 	#name : #ToOneSlot,
-	#superclass : #RefSlot,
+	#superclass : #ReferenceRelationSlot,
 	#category : #'ReflexiveAST-slots'
 }
 

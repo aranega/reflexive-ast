@@ -1,6 +1,6 @@
 Class {
 	#name : #ToManySlot,
-	#superclass : #RefSlot,
+	#superclass : #ReferenceRelationSlot,
 	#instVars : [
 		'ordered'
 	],
