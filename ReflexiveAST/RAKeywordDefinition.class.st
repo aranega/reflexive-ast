@@ -6,3 +6,13 @@ Class {
 	],
 	#category : #'ReflexiveAST-core'
 }
+
+{ #category : #accessing }
+RAKeywordDefinition >> argument [
+	^ argument
+]
+
+{ #category : #accessing }
+RAKeywordDefinition >> argument: anObject [
+	argument := anObject
+]

@@ -6,3 +6,13 @@ Class {
 	],
 	#category : #'ReflexiveAST-core'
 }
+
+{ #category : #accessing }
+RAArgumentUse >> reference [
+	^ reference
+]
+
+{ #category : #accessing }
+RAArgumentUse >> reference: anObject [
+	reference := anObject
+]

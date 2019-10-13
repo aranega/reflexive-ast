@@ -7,6 +7,11 @@ Class {
 	#category : #'ReflexiveAST-core'
 }
 
+{ #category : #accessing }
+RADynamicArray >> expressions [
+	^ expressions
+]
+
 { #category : #initialization }
 RADynamicArray >> initialize [
 	super initialize.

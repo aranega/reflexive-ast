@@ -14,6 +14,11 @@ RAMethod >> initialize [
 ]
 
 { #category : #accessing }
+RAMethod >> statements [
+	^ statements
+]
+
+{ #category : #accessing }
 RAMethod >> temporaries [
 	^ temporaries
 ]

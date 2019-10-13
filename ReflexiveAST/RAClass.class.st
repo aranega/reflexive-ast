@@ -11,3 +11,8 @@ Class {
 RAClass >> initialize [
 	super initialize.
 ]
+
+{ #category : #accessing }
+RAClass >> instVars [
+	^ instVars
+]

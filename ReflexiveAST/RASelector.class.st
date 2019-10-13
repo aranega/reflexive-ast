@@ -11,3 +11,8 @@ Class {
 RASelector >> initialize [
 	super initialize.
 ]
+
+{ #category : #accessing }
+RASelector >> keywords [
+	^ keywords
+]

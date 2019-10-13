@@ -22,3 +22,8 @@ RATempDefinition >> name [
 RATempDefinition >> name: anObject [
 	name := anObject
 ]
+
+{ #category : #accessing }
+RATempDefinition >> usage [
+	^ usage
+]

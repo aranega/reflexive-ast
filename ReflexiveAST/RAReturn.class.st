@@ -6,3 +6,13 @@ Class {
 	],
 	#category : #'ReflexiveAST-core'
 }
+
+{ #category : #accessing }
+RAReturn >> expression [
+	^ expression
+]
+
+{ #category : #accessing }
+RAReturn >> expression: anObject [
+	expression := anObject
+]

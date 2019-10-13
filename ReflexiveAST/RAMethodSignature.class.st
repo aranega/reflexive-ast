@@ -6,3 +6,13 @@ Class {
 	],
 	#category : #'ReflexiveAST-core'
 }
+
+{ #category : #accessing }
+RAMethodSignature >> selector [
+	^ selector
+]
+
+{ #category : #accessing }
+RAMethodSignature >> selector: anObject [
+	selector := anObject
+]

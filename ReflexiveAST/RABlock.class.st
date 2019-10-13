@@ -12,3 +12,13 @@ Class {
 RABlock >> initialize [
 	super initialize.
 ]
+
+{ #category : #accessing }
+RABlock >> statements [
+	^ statements
+]
+
+{ #category : #accessing }
+RABlock >> temporaries [
+	^ temporaries
+]

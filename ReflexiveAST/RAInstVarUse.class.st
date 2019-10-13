@@ -6,3 +6,13 @@ Class {
 	],
 	#category : #'ReflexiveAST-core'
 }
+
+{ #category : #accessing }
+RAInstVarUse >> reference [
+	^ reference
+]
+
+{ #category : #accessing }
+RAInstVarUse >> reference: anObject [
+	reference := anObject
+]

@@ -6,3 +6,13 @@ Class {
 	],
 	#category : #'ReflexiveAST-core'
 }
+
+{ #category : #accessing }
+RAKeyword >> expression [
+	^ expression
+]
+
+{ #category : #accessing }
+RAKeyword >> expression: anObject [
+	expression := anObject
+]

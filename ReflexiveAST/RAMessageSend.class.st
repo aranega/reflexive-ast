@@ -12,3 +12,18 @@ Class {
 RAMessageSend >> initialize [
 	super initialize.
 ]
+
+{ #category : #accessing }
+RAMessageSend >> keywords [
+	^ keywords
+]
+
+{ #category : #accessing }
+RAMessageSend >> receiver [
+	^ receiver
+]
+
+{ #category : #accessing }
+RAMessageSend >> receiver: anObject [
+	receiver := anObject
+]

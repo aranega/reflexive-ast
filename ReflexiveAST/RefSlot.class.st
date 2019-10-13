@@ -6,7 +6,7 @@ Class {
 		'#inverseName',
 		'#inverseSlot',
 		'#containment',
-		'#parentSlot => AnObsoleteHiddenParentSlot'
+		'#parentSlot => ParentSlot'
 	],
 	#category : #'ReflexiveAST-slots'
 }
