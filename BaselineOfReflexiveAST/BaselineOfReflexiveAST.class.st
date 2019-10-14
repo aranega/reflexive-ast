@@ -14,10 +14,3 @@ BaselineOfReflexiveAST >> baseline: spec [
 				package: 'ReflexiveAST-core'
 					with: [ spec requires: #('ReflexiveAST-slots') ] ]
 ]
-
-{ #category : #baselines }
-BaselineOfReflexiveAST >> project [
-	^ super project
-		loadType: #atomic;
-		yourself
-]
