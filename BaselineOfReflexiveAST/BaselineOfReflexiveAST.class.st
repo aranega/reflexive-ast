@@ -7,7 +7,12 @@ Class {
 { #category : #baselines }
 BaselineOfReflexiveAST >> baseline: spec [
 	<baseline>
-	spec for: #common do: [ spec package: 'ReflexiveAST' ]
+	spec
+		for: #common
+		do: [ spec
+				package: 'ReflexiveAST-slots';
+				package: 'ReflexiveAST-core'
+					with: [ spec requires: #('ReflexiveAST-slots') ] ]
 ]
 
 { #category : #baselines }
