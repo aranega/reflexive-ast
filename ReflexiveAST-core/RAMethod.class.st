@@ -2,6 +2,7 @@ Class {
 	#name : #RAMethod,
 	#superclass : #ReflectiveAstNode,
 	#instVars : [
+		'#keywords => ToManySlot inClass: #RAKeywordDefinition containment: true',
 		'#temporaries => ToManySlot inClass: #RATempDefinition containment: true',
 		'#statements => ToManySlot inClass: #RATempDefinition containment: true'
 	],
@@ -16,6 +17,11 @@ RAMethod >> acceptVisitor: anAstVisitor [
 { #category : #initialization }
 RAMethod >> initialize [
 	super initialize.
+]
+
+{ #category : #accessing }
+RAMethod >> keywords [
+	^ keywords
 ]
 
 { #category : #accessing }
