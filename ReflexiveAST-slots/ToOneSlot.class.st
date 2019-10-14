@@ -27,8 +27,8 @@ ToOneSlot >> write: newValue to: anObject [
 				
 	self isContainment
 		ifTrue: [ 
-			(oldValue class slotNamed: #parent) write: nil on: oldValue.
-			(newValue class slotNamed: #parent) write: anObject on: newValue.
+			oldValue ifNotNil: [(oldValue class slotNamed: #parent) write: nil to: oldValue].
+			newValue ifNotNil: [(newValue class slotNamed: #parent) write: anObject to: newValue].
 			 ].
 	super write: newValue to: anObject
 ]
