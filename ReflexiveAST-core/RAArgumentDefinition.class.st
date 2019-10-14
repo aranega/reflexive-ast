@@ -8,6 +8,11 @@ Class {
 	#category : #'ReflexiveAST-core'
 }
 
+{ #category : #accessing }
+RAArgumentDefinition >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitArgumentDefinition: self
+]
+
 { #category : #initialization }
 RAArgumentDefinition >> initialize [
 	super initialize.

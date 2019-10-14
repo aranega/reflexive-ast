@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #initialization }
+RAClass >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitClass: self
+]
+
+{ #category : #initialization }
 RAClass >> initialize [
 	super initialize.
 ]

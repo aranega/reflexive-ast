@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+RAKeyword >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitKeyword: self
+]
+
+{ #category : #accessing }
 RAKeyword >> expression [
 	^ expression
 ]

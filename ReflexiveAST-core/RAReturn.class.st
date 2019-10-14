@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+RAReturn >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitReturn: self
+]
+
+{ #category : #accessing }
 RAReturn >> expression [
 	^ expression
 ]

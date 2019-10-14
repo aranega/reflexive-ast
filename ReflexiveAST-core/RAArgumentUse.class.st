@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+RAArgumentUse >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitArgumentUse: self
+]
+
+{ #category : #accessing }
 RAArgumentUse >> reference [
 	^ reference
 ]

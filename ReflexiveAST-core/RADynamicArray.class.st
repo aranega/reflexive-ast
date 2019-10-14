@@ -7,6 +7,11 @@ Class {
 	#category : #'ReflexiveAST-core'
 }
 
+{ #category : #initialization }
+RADynamicArray >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitDynamicArray: self
+]
+
 { #category : #accessing }
 RADynamicArray >> expressions [
 	^ expressions

@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #initialization }
+RASelector >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitSelector: self
+]
+
+{ #category : #initialization }
 RASelector >> initialize [
 	super initialize.
 ]

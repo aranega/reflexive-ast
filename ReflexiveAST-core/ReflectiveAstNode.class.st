@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+ReflectiveAstNode >> acceptVisitor: aVisitor [
+	self subclassResponsibility 
+]
+
+{ #category : #accessing }
 ReflectiveAstNode >> initialize [
 	
 	self class initializeSlots: self.

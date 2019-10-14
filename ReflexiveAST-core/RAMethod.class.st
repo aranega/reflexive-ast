@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #initialization }
+RAMethod >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitMethod: self
+]
+
+{ #category : #initialization }
 RAMethod >> initialize [
 	super initialize.
 ]

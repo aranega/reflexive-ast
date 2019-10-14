@@ -8,6 +8,11 @@ Class {
 	#category : #'ReflexiveAST-core'
 }
 
+{ #category : #accessing }
+RAMessageSend >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitMessageSend: self
+]
+
 { #category : #initialization }
 RAMessageSend >> initialize [
 	super initialize.

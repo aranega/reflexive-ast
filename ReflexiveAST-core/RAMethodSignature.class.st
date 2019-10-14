@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+RAMethodSignature >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitMethodSignature: self
+]
+
+{ #category : #accessing }
 RAMethodSignature >> selector [
 	^ selector
 ]

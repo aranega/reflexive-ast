@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #initialization }
+RATempDefinition >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitTempDefinition: self
+]
+
+{ #category : #initialization }
 RATempDefinition >> initialize [
 	super initialize.
 ]

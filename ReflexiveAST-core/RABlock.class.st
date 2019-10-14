@@ -8,6 +8,11 @@ Class {
 	#category : #'ReflexiveAST-core'
 }
 
+{ #category : #accessing }
+RABlock >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitBlock: self
+]
+
 { #category : #initialization }
 RABlock >> initialize [
 	super initialize.

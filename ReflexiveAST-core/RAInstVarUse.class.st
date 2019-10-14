@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+RAInstVarUse >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitInstVarUse: self
+]
+
+{ #category : #accessing }
 RAInstVarUse >> reference [
 	^ reference
 ]

@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+RAKeywordDefinition >> acceptVisitor: anAstVisitor [
+	^ anAstVisitor visitKeywordDefinition: self
+]
+
+{ #category : #accessing }
 RAKeywordDefinition >> argument [
 	^ argument
 ]
