@@ -18,6 +18,10 @@ RABaseVisitor >> visitArray: array [
 ]
 
 { #category : #visiting }
+RABaseVisitor >> visitBinaryMessageSend: binaryMessageSend [
+]
+
+{ #category : #visiting }
 RABaseVisitor >> visitBlock: block [
 ]
 

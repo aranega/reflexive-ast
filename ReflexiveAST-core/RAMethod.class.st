@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'#keywords => ToManySlot inClass: #RAKeywordDefinition containment: true',
 		'#temporaries => ToManySlot inClass: #RATempDefinition containment: true',
-		'#statements => ToManySlot inClass: #RATempDefinition containment: true'
+		'#statements => ToManySlot inClass: #RAStatement containment: true'
 	],
 	#category : #'ReflexiveAST-core'
 }

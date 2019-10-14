@@ -1,6 +1,6 @@
 Class {
 	#name : #RAReturn,
-	#superclass : #RAStatment,
+	#superclass : #RAStatement,
 	#instVars : [
 		'#expression => ToOneSlot inClass: #RAExpression containment: true'
 	],

@@ -1,5 +1,5 @@
 Class {
 	#name : #RAExpression,
-	#superclass : #RAStatment,
+	#superclass : #RAStatement,
 	#category : #'ReflexiveAST-core'
 }

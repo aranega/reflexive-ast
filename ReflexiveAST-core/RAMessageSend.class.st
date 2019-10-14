@@ -3,7 +3,8 @@ Class {
 	#superclass : #RAExpression,
 	#instVars : [
 		'#receiver => ToOneSlot inClass: #RAExpression containment: true',
-		'#keywords => ToManySlot inClass: #RAKeyword containment: true'
+		'#keywords => ToManySlot inClass: #RAKeyword containment: true',
+		'#isBinary'
 	],
 	#category : #'ReflexiveAST-core'
 }
@@ -16,6 +17,11 @@ RAMessageSend >> acceptVisitor: anAstVisitor [
 { #category : #initialization }
 RAMessageSend >> initialize [
 	super initialize.
+]
+
+{ #category : #accessing }
+RAMessageSend >> isBinary [
+	^ false
 ]
 
 { #category : #accessing }

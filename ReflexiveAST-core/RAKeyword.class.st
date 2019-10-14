@@ -2,7 +2,8 @@ Class {
 	#name : #RAKeyword,
 	#superclass : #ReflectiveAstNode,
 	#instVars : [
-		'#expression => ToOneSlot inClass: #RAExpression containment: true'
+		'#expression => ToOneSlot inClass: #RAExpression containment: true',
+		'#name'
 	],
 	#category : #'ReflexiveAST-core'
 }
@@ -20,4 +21,14 @@ RAKeyword >> expression [
 { #category : #accessing }
 RAKeyword >> expression: anObject [
 	expression := anObject
+]
+
+{ #category : #accessing }
+RAKeyword >> name [
+	^ name
+]
+
+{ #category : #accessing }
+RAKeyword >> name: aName [
+	name := aName
 ]

@@ -1,5 +1,5 @@
 Class {
-	#name : #RAStatment,
+	#name : #RAStatement,
 	#superclass : #ReflectiveAstNode,
 	#category : #'ReflexiveAST-core'
 }

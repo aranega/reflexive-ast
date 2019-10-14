@@ -2,7 +2,7 @@ Class {
 	#name : #RAClass,
 	#superclass : #ReflectiveAstNode,
 	#instVars : [
-		'#instVars => ToManySlot inClass: #RAInstVar containment: true'
+		'#instVars => ToManySlot inClass: #RAInstVarDefinition containment: true'
 	],
 	#category : #'ReflexiveAST-core'
 }

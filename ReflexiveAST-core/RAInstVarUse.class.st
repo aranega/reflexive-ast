@@ -2,7 +2,7 @@ Class {
 	#name : #RAInstVarUse,
 	#superclass : #RAVarUsage,
 	#instVars : [
-		'#reference => ToOneSlot inverse: #usage inClass: #RAInstVar'
+		'#reference => ToOneSlot inverse: #usage inClass: #RAInstVarDefinition'
 	],
 	#category : #'ReflexiveAST-core'
 }

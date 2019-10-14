@@ -1,10 +1,9 @@
 Class {
 	#name : #RAArgumentDefinition,
-	#superclass : #ReflectiveAstNode,
+	#superclass : #RAVariableDefinition,
 	#instVars : [
 		'#keyword => ToOneSlot inverse: #argument inClass: #RAKeywordDefinition',
-		'#usage => ToManySlot inverse: #reference inClass: #RAArgumentUse',
-		'#name'
+		'#usage => ToManySlot inverse: #reference inClass: #RAArgumentUse'
 	],
 	#category : #'ReflexiveAST-core'
 }
@@ -27,16 +26,6 @@ RAArgumentDefinition >> keyword [
 { #category : #accessing }
 RAArgumentDefinition >> keyword: anObject [
 	keyword := anObject
-]
-
-{ #category : #accessing }
-RAArgumentDefinition >> name [
-	^ name
-]
-
-{ #category : #accessing }
-RAArgumentDefinition >> name: aName [
-	name := aName
 ]
 
 { #category : #accessing }

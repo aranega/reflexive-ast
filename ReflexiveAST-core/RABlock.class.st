@@ -2,7 +2,7 @@ Class {
 	#name : #RABlock,
 	#superclass : #RAExpression,
 	#instVars : [
-		'#statements => ToManySlot inClass: #RAStatment containment: true',
+		'#statements => ToManySlot inClass: #RAStatement containment: true',
 		'#temporaries => ToManySlot inClass: #RATempDefinition containment: true'
 	],
 	#category : #'ReflexiveAST-core'
