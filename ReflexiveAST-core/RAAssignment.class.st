@@ -12,3 +12,23 @@ Class {
 RAAssignment >> acceptVisitor: anAstVisitor [
 	^ anAstVisitor visitAssignment: self
 ]
+
+{ #category : #accessing }
+RAAssignment >> expression [
+	^ expression
+]
+
+{ #category : #accessing }
+RAAssignment >> expression: anExpression [
+	expression := anExpression
+]
+
+{ #category : #accessing }
+RAAssignment >> variable [
+	^ variable
+]
+
+{ #category : #accessing }
+RAAssignment >> variable: aVar [
+	variable := aVar
+]
