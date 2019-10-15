@@ -25,6 +25,11 @@ RAMethod >> keywords [
 ]
 
 { #category : #accessing }
+RAMethod >> owningClass [
+	^ self parent
+]
+
+{ #category : #accessing }
 RAMethod >> statements [
 	^ statements
 ]
