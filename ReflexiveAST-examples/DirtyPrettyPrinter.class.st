@@ -46,6 +46,11 @@ DirtyPrettyPrinter >> visitMethod: method [
 ]
 
 { #category : #visiting }
+DirtyPrettyPrinter >> visitReturn: return [
+	^ '^ ', (return expression acceptVisitor: self) asString
+]
+
+{ #category : #visiting }
 DirtyPrettyPrinter >> visitTempDefinition: temp [
 	^ temp name
 ]
