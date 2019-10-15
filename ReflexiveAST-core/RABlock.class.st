@@ -3,7 +3,8 @@ Class {
 	#superclass : #RAExpression,
 	#instVars : [
 		'#statements => ToManySlot inClass: #RAStatement containment: true',
-		'#temporaries => ToManySlot inClass: #RATempDefinition containment: true'
+		'#temporaries => ToManySlot inClass: #RATempDefinition containment: true',
+		'#arguments => ToManySlot inClass: #RAArgumentDefinition containment: true'
 	],
 	#category : #'ReflexiveAST-core'
 }
@@ -11,6 +12,11 @@ Class {
 { #category : #accessing }
 RABlock >> acceptVisitor: anAstVisitor [
 	^ anAstVisitor visitBlock: self
+]
+
+{ #category : #accessing }
+RABlock >> arguments [
+	^ arguments
 ]
 
 { #category : #initialization }
