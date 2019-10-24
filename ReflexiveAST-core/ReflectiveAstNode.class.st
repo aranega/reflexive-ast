@@ -13,6 +13,26 @@ ReflectiveAstNode >> acceptVisitor: aVisitor [
 ]
 
 { #category : #accessing }
+ReflectiveAstNode >> allChildren [
+	^ self children, (self children flatCollect: [ :each | each allChildren ]). 
+]
+
+{ #category : #accessing }
+ReflectiveAstNode >> children [
+	| children |
+	children := OrderedCollection new.
+	self class slots
+		do: [ :slot | 
+			((slot isKindOf: ReferenceRelationSlot) and: [ slot isContainment ])
+				ifTrue: [ slot isMany
+						ifTrue: [ children addAll: (slot read: self) ]
+						ifFalse: [ | elem |
+							elem := slot read: self.
+							elem ifNotNil: [ children add: elem ] ] ] ].
+	^ children
+]
+
+{ #category : #accessing }
 ReflectiveAstNode >> initialize [
 	
 	self class initializeSlots: self.
