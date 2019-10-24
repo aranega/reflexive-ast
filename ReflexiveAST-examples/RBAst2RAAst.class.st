@@ -2,14 +2,15 @@ Class {
 	#name : #RBAst2RAAst,
 	#superclass : #RBProgramNodeVisitor,
 	#instVars : [
-		'currentScope'
+		'currentScope',
+		'owningClass'
 	],
 	#category : #'ReflexiveAST-examples'
 }
 
 { #category : #visiting }
 RBAst2RAAst >> createVariableUse: aVariable [
-	| varCollection varUse scope |
+	| varCollection varUse scope definition |
 	scope := currentScope top.
 	aVariable isBlockVar
 		ifTrue: [ varUse := RATempUse new.
@@ -25,20 +26,35 @@ RBAst2RAAst >> createVariableUse: aVariable [
 				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
 	aVariable isArgument
 		ifTrue: [ varUse := RAArgumentUse new.
-			varCollection := scope keywords
-				select: [ :each | each argument name = aVariable name ]
-				thenCollect: [ :each | each argument ].
+			varCollection := scope arguments
+				select: [ :each | each name = aVariable name ].
 			varCollection
 				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
-	varCollection := scope owningClass. 	"get instance vars from parent class"
-	varCollection
-		ifNil: [ ^ nil ].
-	varUse := RAInstVarUse new
+	owningClass ifNil: [ ^ nil ].
+	varUse := RAInstVarUse new.
+	definition := (owningClass instVars
+		select: [ :each | each name = aVariable name ]) at: 1.
+	varUse reference: definition.
+	^ varUse
 ]
 
 { #category : #visiting }
 RBAst2RAAst >> initialize [
 	currentScope := Stack new.
+]
+
+{ #category : #visiting }
+RBAst2RAAst >> initializeClassContext: aMethodNode [
+	| classNode methodClass |
+	methodClass := aMethodNode methodClass.
+	classNode := RAClass new.
+	classNode name: methodClass name.
+	methodClass instVarNames do: [ :each | | instVarDef | 
+		instVarDef := RAInstVarDefinition new.
+		instVarDef name: each.
+		classNode instVars add: instVarDef.
+	].
+	^ classNode
 ]
 
 { #category : #visiting }
@@ -49,6 +65,15 @@ RBAst2RAAst >> visitAssignmentNode: assignNode [
 	var ifNil: [ ^ RAComment new content: 'Not yet implemented (missing class ref)' ].
 	assign variable: var.
 	^ assign
+]
+
+{ #category : #visiting }
+RBAst2RAAst >> visitBinaryMessageNode: messageNode [
+	| messageSend |
+	self halt.
+	messageSend := RAMessageSend new.
+	
+	^ messageSend 
 ]
 
 { #category : #visiting }
@@ -82,11 +107,29 @@ RBAst2RAAst >> visitBlockNode: blockNode [
 ]
 
 { #category : #visiting }
-RBAst2RAAst >> visitMessageNode: messageNode [
-	| messageSend |
+RBAst2RAAst >> visitKeywordMessageNode: messageNode [
+	| messageSend keywordList |
 	messageSend := RAMessageSend new.
-	
-	^ messageSend 
+	messageSend receiver: (messageNode receiver acceptVisitor: self).
+	keywordList := messageNode keywords.
+	keywordList
+		withIndexCollect: [ :each :i | 
+			| keyword |
+			keyword := RAKeyword new.
+			keyword name: each asString.
+			messageNode arguments ifNotEmpty: [  | argNode |
+				argNode := messageNode arguments at: i.
+				keyword expression: (argNode acceptVisitor: self).
+			].
+			keyword ].
+	^ messageSend
+]
+
+{ #category : #visiting }
+RBAst2RAAst >> visitMessageNode: messageNode [
+	messageNode isBinary
+		ifTrue: [ ^ self visitBinaryMessageNode: messageNode ].
+	^ self visitKeywordMessageNode: messageNode
 ]
 
 { #category : #visiting }
@@ -94,6 +137,8 @@ RBAst2RAAst >> visitMethodNode: methodNode [
 	| method |
 	method := RAMethod new.
 	currentScope push: method.
+	owningClass := self initializeClassContext: methodNode.
+	owningClass methods add: method.
 	method keywords
 		addAll:
 			(methodNode keywords
@@ -132,6 +177,16 @@ RBAst2RAAst >> visitReturnNode: messageNode [
 ]
 
 { #category : #visiting }
+RBAst2RAAst >> visitSelfNode: selfNode [
+	^ RAAPseudoVariable new name: 'self'
+]
+
+{ #category : #visiting }
 RBAst2RAAst >> visitTemporaryNode: tempNode [
 	^ self createVariableUse: tempNode
+]
+
+{ #category : #visiting }
+RBAst2RAAst >> visitVariableNode: varNode [
+	^ self createVariableUse: varNode
 ]
