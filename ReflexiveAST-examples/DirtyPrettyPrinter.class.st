@@ -17,6 +17,11 @@ DirtyPrettyPrinter >> collectionAsString: aCollection separatedBy: aString [
 ]
 
 { #category : #visiting }
+DirtyPrettyPrinter >> visitArgumentDefinition: argDef [
+	^ argDef name
+]
+
+{ #category : #visiting }
 DirtyPrettyPrinter >> visitArgumentUse: argumentUse [
 	^ argumentUse reference name
 ]
@@ -30,6 +35,31 @@ DirtyPrettyPrinter >> visitAssignment: assignment [
 DirtyPrettyPrinter >> visitBinaryMessageSend: binaryMessageSend [
 	^ '{1} {2}' format: { (binaryMessageSend receiver acceptVisitor: self) asString.
 	self collectionAsString: binaryMessageSend keywords }
+]
+
+{ #category : #visiting }
+DirtyPrettyPrinter >> visitBlock: block [
+	| args temps |
+	args := block hasArguments
+		ifTrue: [ (block arguments
+				inject: ''
+				into: [ :sum :each | sum , ' :' , (each acceptVisitor: self) asString ])
+				, ' | ' ]
+		ifFalse: [ '' ].
+	temps := block hasTemps
+		ifTrue: [ '| ' , (self collectionAsString: block temporaries) , ' |' ]
+		ifFalse: [ '' ].
+	^ '[{1}{2}
+	{3}			
+]'
+		format:
+			{args.
+			temps.
+			(self
+				collectionAsString: block statements
+				separatedBy:
+					'.
+')}
 ]
 
 { #category : #visiting }

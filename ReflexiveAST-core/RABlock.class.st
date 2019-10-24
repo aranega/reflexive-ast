@@ -24,9 +24,24 @@ RABlock >> arguments [
 	^ arguments
 ]
 
+{ #category : #accessing }
+RABlock >> hasArguments [
+	^ self arguments isNotEmpty
+]
+
+{ #category : #accessing }
+RABlock >> hasTemps [
+	^ self temporaries isNotEmpty
+]
+
 { #category : #initialization }
 RABlock >> initialize [
 	super initialize.
+]
+
+{ #category : #accessing }
+RABlock >> isBlock [
+	^ true
 ]
 
 { #category : #accessing }

@@ -20,6 +20,12 @@ RAMethod >> accessibleArguments [
 ]
 
 { #category : #accessing }
+RAMethod >> allOwnedBlocks [
+	^ self statements
+		flatCollect: [ :stmt | stmt allChildren select: [ :each | each isBlock ] ]
+]
+
+{ #category : #accessing }
 RAMethod >> arguments [
 	^ keywords collect: [ :each | each argument ]
 ]
@@ -32,6 +38,11 @@ RAMethod >> initialize [
 { #category : #accessing }
 RAMethod >> keywords [
 	^ keywords
+]
+
+{ #category : #accessing }
+RAMethod >> ownedBlocks [
+	^ self statements select: [ :each | each isBlock ]
 ]
 
 { #category : #accessing }
