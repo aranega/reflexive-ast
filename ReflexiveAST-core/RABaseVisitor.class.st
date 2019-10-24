@@ -78,6 +78,10 @@ RABaseVisitor >> visitNumber: number [
 ]
 
 { #category : #visiting }
+RABaseVisitor >> visitPseudoVariable: aVisitor [
+]
+
+{ #category : #visiting }
 RABaseVisitor >> visitReturn: return [
 ]
 
