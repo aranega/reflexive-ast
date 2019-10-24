@@ -4,6 +4,16 @@ Class {
 	#category : #'ReflexiveAST-slots'
 }
 
+{ #category : #internal }
+ToOneSlot >> isMany [
+	^ false
+]
+
+{ #category : #internal }
+ToOneSlot >> isSingle [
+	^ true
+]
+
 { #category : #testing }
 ToOneSlot >> isToOneSlot [
 

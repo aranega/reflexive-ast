@@ -74,8 +74,18 @@ ToManySlot >> inverse: anInverseSymbol inClass: aTargetClassOrSymbol containment
 ]
 
 { #category : #internal }
+ToManySlot >> isMany [
+	^ true
+]
+
+{ #category : #internal }
 ToManySlot >> isOrdered [
 	^ ordered
+]
+
+{ #category : #internal }
+ToManySlot >> isSingle [
+	^ false
 ]
 
 { #category : #internal }
