@@ -2,7 +2,9 @@ Class {
 	#name : #RAClass,
 	#superclass : #ReflectiveAstNode,
 	#instVars : [
-		'#instVars => ToManySlot inClass: #RAInstVarDefinition containment: true'
+		'#name',
+		'#instVars => ToManySlot inClass: #RAInstVarDefinition containment: true',
+		'#methods => ToManySlot inClass: #RAMethod containment: true'
 	],
 	#category : #'ReflexiveAST-core'
 }
@@ -20,4 +22,19 @@ RAClass >> initialize [
 { #category : #accessing }
 RAClass >> instVars [
 	^ instVars
+]
+
+{ #category : #accessing }
+RAClass >> methods [
+	^ methods
+]
+
+{ #category : #accessing }
+RAClass >> name [
+	^ name
+]
+
+{ #category : #accessing }
+RAClass >> name: aName [
+	name := aName
 ]
