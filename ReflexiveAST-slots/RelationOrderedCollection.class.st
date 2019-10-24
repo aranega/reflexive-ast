@@ -25,6 +25,11 @@ RelationOrderedCollection >> add: anObject [
 	^set add: anObject
 ]
 
+{ #category : #adding }
+RelationOrderedCollection >> at: anIndex [
+	^ set at: anIndex 
+]
+
 { #category : #copying }
 RelationOrderedCollection >> copy [
 
