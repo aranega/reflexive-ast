@@ -15,6 +15,11 @@ RABlock >> acceptVisitor: anAstVisitor [
 ]
 
 { #category : #accessing }
+RABlock >> accessibleArguments [
+	^ self arguments, self parent accessibleArguments 
+]
+
+{ #category : #accessing }
 RABlock >> arguments [
 	^ arguments
 ]

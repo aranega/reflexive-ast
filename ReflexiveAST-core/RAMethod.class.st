@@ -15,6 +15,11 @@ RAMethod >> acceptVisitor: anAstVisitor [
 ]
 
 { #category : #accessing }
+RAMethod >> accessibleArguments [
+	^ self arguments
+]
+
+{ #category : #accessing }
 RAMethod >> arguments [
 	^ keywords collect: [ :each | each argument ]
 ]
