@@ -13,7 +13,7 @@ DirtyPrettyPrinter >> collectionAsString: aCollection [
 DirtyPrettyPrinter >> collectionAsString: aCollection separatedBy: aString [
 	^ aCollection
 		inject: ''
-		into: [ :sum :each | sum , aString , (each acceptVisitor: self) asString ]
+		into: [ :sum :each | sum, (sum isEmpty ifTrue: [''] ifFalse: [aString]), (each acceptVisitor: self) asString ]
 ]
 
 { #category : #visiting }
@@ -59,7 +59,7 @@ DirtyPrettyPrinter >> visitBlock: block [
 				collectionAsString: block statements
 				separatedBy:
 					'.
-')}
+	')}
 ]
 
 { #category : #visiting }
