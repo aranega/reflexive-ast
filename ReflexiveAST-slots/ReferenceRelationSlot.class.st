@@ -144,7 +144,7 @@ ReferenceRelationSlot >> isToOneSlot [
 ReferenceRelationSlot >> linkUp [
 
 	inverseSlot := self targetClass slotNamed: inverseName.
-	(inverseSlot isKindOf: RelationSlot)
+	(inverseSlot isKindOf: ReferenceRelationSlot)
 		ifFalse: [ self error: 'Invalid association: ... ' ].
 		
 	inverseSlot inverseName = self name
