@@ -1,5 +1,5 @@
 Class {
-	#name : #RAAPseudoVariable,
+	#name : #RAPseudoVariable,
 	#superclass : #RAVarUsage,
 	#instVars : [
 		'name'
@@ -8,16 +8,16 @@ Class {
 }
 
 { #category : #accessing }
-RAAPseudoVariable >> acceptVisitor: aVisitor [
+RAPseudoVariable >> acceptVisitor: aVisitor [
 	^ aVisitor visitPseudoVariable: self
 ]
 
 { #category : #accessing }
-RAAPseudoVariable >> name [
+RAPseudoVariable >> name [
 	^ name
 ]
 
 { #category : #accessing }
-RAAPseudoVariable >> name: aName [
+RAPseudoVariable >> name: aName [
 	name := aName
 ]
