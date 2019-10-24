@@ -14,6 +14,11 @@ RAMethod >> acceptVisitor: anAstVisitor [
 	^ anAstVisitor visitMethod: self
 ]
 
+{ #category : #accessing }
+RAMethod >> arguments [
+	^ keywords collect: [ :each | each argument ]
+]
+
 { #category : #initialization }
 RAMethod >> initialize [
 	super initialize.
