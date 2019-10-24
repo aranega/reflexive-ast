@@ -26,7 +26,7 @@ RBAst2RAAst >> createVariableUse: aVariable [
 				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
 	aVariable isArgument
 		ifTrue: [ varUse := RAArgumentUse new.
-			varCollection := scope arguments
+			varCollection := self extractAccessibleArguments
 				select: [ :each | each name = aVariable name ].
 			varCollection
 				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
@@ -36,6 +36,11 @@ RBAst2RAAst >> createVariableUse: aVariable [
 		select: [ :each | each name = aVariable name ]) at: 1.
 	varUse reference: definition.
 	^ varUse
+]
+
+{ #category : #visiting }
+RBAst2RAAst >> extractAccessibleArguments [
+	^ currentScope flatCollect: [ :each | each arguments ]
 ]
 
 { #category : #visiting }
@@ -64,6 +69,7 @@ RBAst2RAAst >> visitAssignmentNode: assignNode [
 	var := self createVariableUse: assignNode variable.
 	var ifNil: [ ^ RAComment new content: 'Not yet implemented (missing class ref)' ].
 	assign variable: var.
+	assign expression: (assignNode value acceptVisitor: self).
 	^ assign
 ]
 
@@ -104,6 +110,12 @@ RBAst2RAAst >> visitBlockNode: blockNode [
 	).
 	currentScope pop.
 	^ block
+]
+
+{ #category : #visiting }
+RBAst2RAAst >> visitGlobalNode: aGlobalNode [
+	
+	^ RAPseudoVariable new name: aGlobalNode name 
 ]
 
 { #category : #visiting }
@@ -178,7 +190,7 @@ RBAst2RAAst >> visitReturnNode: messageNode [
 
 { #category : #visiting }
 RBAst2RAAst >> visitSelfNode: selfNode [
-	^ RAAPseudoVariable new name: 'self'
+	^ RAPseudoVariable new name: 'self'
 ]
 
 { #category : #visiting }

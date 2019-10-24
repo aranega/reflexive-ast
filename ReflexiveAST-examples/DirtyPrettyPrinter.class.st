@@ -17,6 +17,11 @@ DirtyPrettyPrinter >> collectionAsString: aCollection separatedBy: aString [
 ]
 
 { #category : #visiting }
+DirtyPrettyPrinter >> visitAssignment: assignment [
+	^ '{1} := {2}.' format: {assignment variable reference name. assignment expression acceptVisitor: self}
+]
+
+{ #category : #visiting }
 DirtyPrettyPrinter >> visitBinaryMessageSend: binaryMessageSend [
 	^ '{1} {2}' format: { (binaryMessageSend receiver acceptVisitor: self) asString.
 	self collectionAsString: binaryMessageSend keywords }
