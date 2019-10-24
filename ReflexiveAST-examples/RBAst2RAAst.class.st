@@ -133,7 +133,7 @@ RBAst2RAAst >> visitKeywordMessageNode: messageNode [
 				argNode := messageNode arguments at: i.
 				keyword expression: (argNode acceptVisitor: self).
 			].
-			keyword ].
+			messageSend keywords add: keyword ].
 	^ messageSend
 ]
 

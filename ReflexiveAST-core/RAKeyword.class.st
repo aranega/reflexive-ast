@@ -24,6 +24,11 @@ RAKeyword >> expression: anObject [
 ]
 
 { #category : #accessing }
+RAKeyword >> hasExpression [
+	^ expression isNotNil 
+]
+
+{ #category : #accessing }
 RAKeyword >> name [
 	^ name
 ]
