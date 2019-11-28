@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'#keywords => ToManySlot inClass: #RAKeywordDefinition containment: true',
 		'#temporaries => ToManySlot inClass: #RATempDefinition containment: true',
-		'#statements => ToManySlot inClass: #RAStatement containment: true'
+		'#statements => ToManySlot inClass: #RAStatement containment: true',
+		'#owningClass => ToOneSlot inClass: #Class'
 	],
 	#category : #'ReflexiveAST-core'
 }
@@ -47,7 +48,12 @@ RAMethod >> ownedBlocks [
 
 { #category : #accessing }
 RAMethod >> owningClass [
-	^ self parent
+	^ owningClass
+]
+
+{ #category : #accessing }
+RAMethod >> owningClass: aClass [
+	owningClass := aClass
 ]
 
 { #category : #accessing }

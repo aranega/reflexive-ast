@@ -32,8 +32,8 @@ RBAst2RAAst >> createVariableUse: aVariable [
 				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
 	owningClass ifNil: [ ^ nil ].
 	varUse := RAInstVarUse new.
-	definition := (owningClass instVars
-		select: [ :each | each name = aVariable name ]) at: 1.
+	definition := (owningClass slots
+		select: [ :each | each name = aVariable name ]) first.
 	varUse reference: definition.
 	^ varUse
 ]
@@ -46,20 +46,6 @@ RBAst2RAAst >> extractAccessibleArguments [
 { #category : #visiting }
 RBAst2RAAst >> initialize [
 	currentScope := Stack new.
-]
-
-{ #category : #visiting }
-RBAst2RAAst >> initializeClassContext: aMethodNode [
-	| classNode methodClass |
-	methodClass := aMethodNode methodClass.
-	classNode := RAClass new.
-	classNode name: methodClass name.
-	methodClass instVarNames do: [ :each | | instVarDef | 
-		instVarDef := RAInstVarDefinition new.
-		instVarDef name: each.
-		classNode instVars add: instVarDef.
-	].
-	^ classNode
 ]
 
 { #category : #visiting }
@@ -149,8 +135,8 @@ RBAst2RAAst >> visitMethodNode: methodNode [
 	| method |
 	method := RAMethod new.
 	currentScope push: method.
-	owningClass := self initializeClassContext: methodNode.
-	owningClass methods add: method.
+	method owningClass: methodNode methodClass.
+	owningClass := method owningClass.
 	method keywords
 		addAll:
 			(methodNode keywords

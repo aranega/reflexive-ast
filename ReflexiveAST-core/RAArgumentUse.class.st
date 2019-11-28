@@ -13,6 +13,11 @@ RAArgumentUse >> acceptVisitor: anAstVisitor [
 ]
 
 { #category : #accessing }
+RAArgumentUse >> name: aString [
+	reference name: aString
+]
+
+{ #category : #accessing }
 RAArgumentUse >> reference [
 	^ reference
 ]
