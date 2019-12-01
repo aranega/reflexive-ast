@@ -14,6 +14,11 @@ RAMessageSend >> acceptVisitor: anAstVisitor [
 	^ anAstVisitor visitMessageSend: self
 ]
 
+{ #category : #accessing }
+RAMessageSend >> arguments [
+	^ keywords collect: [ :k | k expression ]
+]
+
 { #category : #initialization }
 RAMessageSend >> initialize [
 	super initialize.
