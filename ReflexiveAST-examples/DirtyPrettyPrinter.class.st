@@ -33,8 +33,9 @@ DirtyPrettyPrinter >> visitAssignment: assignment [
 
 { #category : #visiting }
 DirtyPrettyPrinter >> visitBinaryMessageSend: binaryMessageSend [
-	^ '{1} {2}' format: { (binaryMessageSend receiver acceptVisitor: self) asString.
-	self collectionAsString: binaryMessageSend keywords }
+	^ '{1} {2} ({3})' format: { (binaryMessageSend receiver acceptVisitor: self) asString.
+	binaryMessageSend operator asString.
+	(binaryMessageSend keywords at: 1) expression acceptVisitor: self }
 ]
 
 { #category : #visiting }

@@ -62,9 +62,10 @@ RBAst2RAAst >> visitAssignmentNode: assignNode [
 { #category : #visiting }
 RBAst2RAAst >> visitBinaryMessageNode: messageNode [
 	| messageSend |
-	self halt.
-	messageSend := RAMessageSend new.
-	
+	messageSend := RABinaryMessageSend new.
+	messageSend left: (messageNode receiver acceptVisitor: self).
+	messageSend right: ((messageNode arguments at: 1) acceptVisitor: self).
+	messageSend operator: messageNode selector.
 	^ messageSend 
 ]
 
@@ -121,6 +122,22 @@ RBAst2RAAst >> visitKeywordMessageNode: messageNode [
 			].
 			messageSend keywords add: keyword ].
 	^ messageSend
+]
+
+{ #category : #visiting }
+RBAst2RAAst >> visitLiteralNode: literalNode [
+	| val literal |
+	literal := literalNode value.
+	literal isString
+		ifTrue: [ val := RAString new ].
+	literal isArray
+		ifTrue: [ val := RAArray new ].
+	literal isNumber
+		ifTrue: [ val := RANumber new ].
+	(#(true false) includes: literal)
+		ifTrue: [ val := RAArray new ].
+	val literalValue: literal.
+	^ val
 ]
 
 { #category : #visiting }
