@@ -22,10 +22,7 @@ ToManySlot class >> inClass: aClass ordered: isOrdered [
 
 { #category : #internal }
 ToManySlot class >> inverse: anInverseSymbol inClass: aTargetClassOrSymbol containment: isContainment ordered: isOrdered [
-	| inst |
-	inst := self new inverse: anInverseSymbol inClass: aTargetClassOrSymbol.
-	inst containment: isContainment; ordered: isOrdered.
-	^ inst
+	^ self inverse: anInverseSymbol inClass: aTargetClassOrSymbol containment: isContainment ordered: true
 ]
 
 { #category : #internal }
@@ -65,6 +62,11 @@ ToManySlot >> initialize: anObject [
 	collectionType := ordered ifTrue: [ RelationOrderedCollection ] ifFalse: [ RelationUSet ].
 	self write: (collectionType owner: anObject slot: self) to: anObject. 
 	
+]
+
+{ #category : #internal }
+ToManySlot >> inverse: anInverseSymbol inClass: aTargetClassOrSymbol containment: isContainment [ 
+	self inverse: anInverseSymbol inClass: aTargetClassOrSymbol containment: true ordered: true
 ]
 
 { #category : #internal }
