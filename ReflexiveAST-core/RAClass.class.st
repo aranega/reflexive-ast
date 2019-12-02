@@ -19,13 +19,8 @@ RAClass >> acceptVisitor: anAstVisitor [
 	^ anAstVisitor visitClass: self
 ]
 
-{ #category : #initialization }
-RAClass >> initialize [
-	super initialize.
-]
-
 { #category : #accessing }
-RAClass >> instVarNamed: aName [
+RAClass >> createOrGetInstVarNamed: aName [
 	| subresult |
 	subresult := instVars select: [ :c | c originSlot name = aName ].
 	subresult
@@ -38,6 +33,11 @@ RAClass >> instVarNamed: aName [
 			instVars add: instvdef.
 			^ instvdef ].
 	^ subresult at: 1
+]
+
+{ #category : #initialization }
+RAClass >> initialize [
+	super initialize.
 ]
 
 { #category : #accessing }

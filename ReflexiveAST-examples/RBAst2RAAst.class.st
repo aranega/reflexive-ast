@@ -41,7 +41,7 @@ RBAst2RAAst >> createVariableUse: aVariable [
 				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
 	owningClass ifNil: [ ^ nil ].
 	varUse := RAInstVarUse new.
-	definition := owningClass instVarNamed: aVariable name.
+	definition := owningClass createOrGetInstVarNamed: aVariable name.
 	varUse reference: definition.
 	^ varUse
 ]
