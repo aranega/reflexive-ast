@@ -20,6 +20,7 @@ RAWorld >> findOrAddClass: aClass [
 	subresult
 		ifEmpty: [ | cls |
 			cls := RAClass new.
+			cls name: aClass name.
 			cls originClass: aClass.
 			classes add: cls.
 			^ cls ].

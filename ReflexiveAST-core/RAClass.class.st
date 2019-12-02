@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'#originClass => ToOneSlot inClass: #Class',
 		'#methods => ToManySlot inverse: #owningClass inClass: #RAMethod containment: true',
-		'#instVars => ToManySlot inverse: #owningClass inClass: #RAInstVarDefinition containment: true'
+		'#instVars => ToManySlot inverse: #owningClass inClass: #RAInstVarDefinition containment: true',
+		'#name'
 	],
 	#category : #'ReflexiveAST-core'
 }
@@ -48,6 +49,16 @@ RAClass >> instVars [
 { #category : #accessing }
 RAClass >> methods [
 	^ methods
+]
+
+{ #category : #accessing }
+RAClass >> name [
+	^ name
+]
+
+{ #category : #accessing }
+RAClass >> name: aName [
+	name := aName
 ]
 
 { #category : #initialization }
