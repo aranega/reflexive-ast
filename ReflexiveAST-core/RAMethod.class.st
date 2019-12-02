@@ -5,7 +5,7 @@ Class {
 		'#keywords => ToManySlot inClass: #RAKeywordDefinition containment: true',
 		'#temporaries => ToManySlot inClass: #RATempDefinition containment: true',
 		'#statements => ToManySlot inClass: #RAStatement containment: true',
-		'#owningClass => ToOneSlot inClass: #Class'
+		'#owningClass => ToOneSlot inverse: #methods inClass: #RAClass'
 	],
 	#category : #'ReflexiveAST-core'
 }

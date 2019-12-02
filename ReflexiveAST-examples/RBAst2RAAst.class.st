@@ -3,10 +3,19 @@ Class {
 	#superclass : #RBProgramNodeVisitor,
 	#instVars : [
 		'currentScope',
-		'owningClass'
+		'owningClass',
+		'world'
 	],
 	#category : #'ReflexiveAST-examples'
 }
+
+{ #category : #'instance creation' }
+RBAst2RAAst class >> new: aWorld [
+	| inst |
+	inst := super new.
+	inst world: aWorld.
+	^ inst
+]
 
 { #category : #visiting }
 RBAst2RAAst >> createVariableUse: aVariable [
@@ -32,8 +41,7 @@ RBAst2RAAst >> createVariableUse: aVariable [
 				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
 	owningClass ifNil: [ ^ nil ].
 	varUse := RAInstVarUse new.
-	definition := (owningClass slots
-		select: [ :each | each name = aVariable name ]) first.
+	definition := owningClass instVarNamed: aVariable name.
 	varUse reference: definition.
 	^ varUse
 ]
@@ -150,9 +158,10 @@ RBAst2RAAst >> visitMessageNode: messageNode [
 { #category : #visiting }
 RBAst2RAAst >> visitMethodNode: methodNode [
 	| method |
+	world := world ifNil: [ RAWorld new ].
 	method := RAMethod new.
 	currentScope push: method.
-	method owningClass: methodNode methodClass.
+	method owningClass: (world findOrAddClass: methodNode methodClass).
 	owningClass := method owningClass.
 	method keywords
 		addAll:
@@ -170,15 +179,13 @@ RBAst2RAAst >> visitMethodNode: methodNode [
 		addAll:
 			(methodNode temporaries
 				collect: [ :each | 
-					| tempDef |					
+					| tempDef |
 					tempDef := RATempDefinition new.
-					tempDef name: each name asString.
-					]).
-	method statements addAll: (
-		methodNode body statements collect: [:each |
-			each acceptVisitor: self
-		]
-	).
+					tempDef name: each name asString ]).
+	method statements
+		addAll:
+			(methodNode body statements
+				collect: [ :each | each acceptVisitor: self ]).
 	currentScope pop.
 	^ method
 ]
@@ -204,4 +211,9 @@ RBAst2RAAst >> visitTemporaryNode: tempNode [
 { #category : #visiting }
 RBAst2RAAst >> visitVariableNode: varNode [
 	^ self createVariableUse: varNode
+]
+
+{ #category : #visiting }
+RBAst2RAAst >> world: aWorld [
+	world := aWorld
 ]

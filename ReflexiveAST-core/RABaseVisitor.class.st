@@ -34,7 +34,8 @@ RABaseVisitor >> visitBoolean: boolean [
 ]
 
 { #category : #visiting }
-RABaseVisitor >> visitClass: classDefinition [
+RABaseVisitor >> visitClass: aClassNode [
+
 ]
 
 { #category : #visiting }
