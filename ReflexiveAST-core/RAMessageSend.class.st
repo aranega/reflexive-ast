@@ -6,7 +6,7 @@ Class {
 		'#keywords => ToManySlot inClass: #RAKeyword containment: true',
 		'#isBinary'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

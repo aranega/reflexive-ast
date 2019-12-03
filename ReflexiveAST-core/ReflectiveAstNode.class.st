@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'#parent => ParentSlot'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

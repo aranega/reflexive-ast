@@ -6,7 +6,7 @@ Class {
 		'#temporaries => ToManySlot inClass: #RATempDefinition containment: true',
 		'#arguments => ToManySlot inClass: #RAArgumentDefinition containment: true'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

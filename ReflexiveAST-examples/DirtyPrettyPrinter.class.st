@@ -27,6 +27,11 @@ DirtyPrettyPrinter >> visitArgumentUse: argumentUse [
 ]
 
 { #category : #visiting }
+DirtyPrettyPrinter >> visitArray: anArray [
+	^ anArray literalValue 
+]
+
+{ #category : #visiting }
 DirtyPrettyPrinter >> visitAssignment: assignment [
 	^ '{1} := {2}' format: {assignment variable reference name. assignment expression acceptVisitor: self}
 ]
@@ -76,6 +81,7 @@ DirtyPrettyPrinter >> visitKeyword: keyword [
 
 { #category : #visiting }
 DirtyPrettyPrinter >> visitKeywordDefinition: keywordDefinition [
+	keywordDefinition parent hasArguments ifFalse: [ ^ keywordDefinition name ]. 
 	^ keywordDefinition name, ' ', keywordDefinition argument name
 ]
 
@@ -103,6 +109,11 @@ DirtyPrettyPrinter >> visitMethod: method [
 			(self collectionAsString: method temporaries).
 			(self collectionAsString: method statements separatedBy: '.
 ')}
+]
+
+{ #category : #visiting }
+DirtyPrettyPrinter >> visitNumber: literal [
+	^ literal literalValue
 ]
 
 { #category : #visiting }

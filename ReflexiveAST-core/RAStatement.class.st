@@ -1,7 +1,7 @@
 Class {
 	#name : #RAStatement,
 	#superclass : #ReflectiveAstNode,
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #testing }

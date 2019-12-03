@@ -1,7 +1,7 @@
 Class {
 	#name : #RABinaryMessageSend,
 	#superclass : #RAMessageSend,
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

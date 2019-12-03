@@ -1,7 +1,7 @@
 Class {
 	#name : #RANumber,
 	#superclass : #RALiteral,
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

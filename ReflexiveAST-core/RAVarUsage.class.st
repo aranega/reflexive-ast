@@ -1,5 +1,5 @@
 Class {
 	#name : #RAVarUsage,
 	#superclass : #RAExpression,
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }

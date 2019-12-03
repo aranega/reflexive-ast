@@ -6,7 +6,7 @@ Class {
 		'#owningClass => ToOneSlot inverse: #instVars inClass: #RAClass',
 		'#usage => ToManySlot inverse: #reference inClass: #RAInstVarUse'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #initialization }

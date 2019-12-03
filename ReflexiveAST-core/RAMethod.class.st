@@ -7,7 +7,7 @@ Class {
 		'#statements => ToManySlot inClass: #RAStatement containment: true',
 		'#owningClass => ToOneSlot inverse: #methods inClass: #RAClass'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #initialization }
@@ -31,6 +31,16 @@ RAMethod >> arguments [
 	^ keywords collect: [ :each | each argument ]
 ]
 
+{ #category : #accessing }
+RAMethod >> hasArguments [
+	^ self arguments size > 1
+]
+
+{ #category : #accessing }
+RAMethod >> hasTemporaries [
+	^ temporaries isNotEmpty 
+]
+
 { #category : #initialization }
 RAMethod >> initialize [
 	super initialize.
@@ -39,6 +49,14 @@ RAMethod >> initialize [
 { #category : #accessing }
 RAMethod >> keywords [
 	^ keywords
+]
+
+{ #category : #accessing }
+RAMethod >> name: aName [
+	keywords ifEmpty: [ keywords add: (RAKeywordDefinition new) ].
+	(keywords size = 1) ifFalse: [ ^ self ].
+	(keywords at: 1) name: aName.
+	
 ]
 
 { #category : #accessing }

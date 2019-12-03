@@ -5,7 +5,7 @@ Class {
 		'#keyword => ToOneSlot inverse: #argument inClass: #RAKeywordDefinition',
 		'#usage => ToManySlot inverse: #reference inClass: #RAArgumentUse'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }
