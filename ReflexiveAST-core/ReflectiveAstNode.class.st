@@ -18,6 +18,11 @@ ReflectiveAstNode >> allChildren [
 ]
 
 { #category : #accessing }
+ReflectiveAstNode >> asAST [
+	^ self
+]
+
+{ #category : #accessing }
 ReflectiveAstNode >> children [
 	| children |
 	children := OrderedCollection new.
