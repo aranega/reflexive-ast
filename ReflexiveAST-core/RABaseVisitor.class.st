@@ -1,7 +1,7 @@
 Class {
 	#name : #RABaseVisitor,
 	#superclass : #Object,
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #visiting }

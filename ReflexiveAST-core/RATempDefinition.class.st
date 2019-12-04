@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'#usage => ToManySlot inverse: #reference inClass: #RATempUse'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #initialization }

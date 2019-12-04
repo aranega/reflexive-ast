@@ -5,7 +5,7 @@ Class {
 		'#expression => ToOneSlot inClass: #RAExpression containment: true',
 		'#name'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

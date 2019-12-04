@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'#reference => ToOneSlot inverse: #usage inClass: #RATempDefinition'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

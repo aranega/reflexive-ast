@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'literalValue'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

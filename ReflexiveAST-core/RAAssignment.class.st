@@ -5,7 +5,7 @@ Class {
 		'#variable => ToOneSlot inClass: #RAVarUsage containment: true',
 		'#expression => ToOneSlot inClass: #RAExpression containment: true'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

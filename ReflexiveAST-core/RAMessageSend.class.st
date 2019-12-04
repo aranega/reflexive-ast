@@ -3,10 +3,9 @@ Class {
 	#superclass : #RAExpression,
 	#instVars : [
 		'#receiver => ToOneSlot inClass: #RAExpression containment: true',
-		'#keywords => ToManySlot inClass: #RAKeyword containment: true',
-		'#isBinary'
+		'#keywords => ToManySlot inClass: #RAKeyword containment: true'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

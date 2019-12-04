@@ -7,7 +7,7 @@ Class {
 		'#instVars => ToManySlot inverse: #owningClass inClass: #RAInstVarDefinition containment: true',
 		'#name'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #initialization }

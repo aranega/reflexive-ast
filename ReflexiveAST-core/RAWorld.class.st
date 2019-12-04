@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'#classes => ToManySlot inClass: #RAClass containment: true'
 	],
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #initialization }

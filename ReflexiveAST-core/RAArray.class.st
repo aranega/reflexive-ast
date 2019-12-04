@@ -1,7 +1,7 @@
 Class {
 	#name : #RAArray,
 	#superclass : #RALiteral,
-	#category : #'ReflexiveAST-core'
+	#category : #'ReflexiveAST-core-core'
 }
 
 { #category : #accessing }

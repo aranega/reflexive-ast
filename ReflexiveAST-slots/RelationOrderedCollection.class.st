@@ -53,6 +53,16 @@ RelationOrderedCollection >> initializeOwner: anObject slot: aToManyAssociation 
 	set := OrderedCollection new
 ]
 
+{ #category : #adding }
+RelationOrderedCollection >> insert: anObject at: index [
+
+	(self includes: anObject)
+		ifTrue: [ ^anObject ].
+		
+	slot add: anObject to: owner.
+	^set add: anObject beforeIndex: index
+]
+
 { #category : #internal }
 RelationOrderedCollection >> inverseAdd: anObject [
 
