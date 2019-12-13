@@ -8,3 +8,8 @@ Class {
 RAStatement >> isBlock [
 	^ false
 ]
+
+{ #category : #testing }
+RAStatement >> isReturn [
+	^ false
+]

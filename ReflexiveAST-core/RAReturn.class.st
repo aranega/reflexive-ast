@@ -21,3 +21,8 @@ RAReturn >> expression [
 RAReturn >> expression: anObject [
 	expression := anObject
 ]
+
+{ #category : #accessing }
+RAReturn >> isReturn [
+	^ true
+]

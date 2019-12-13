@@ -170,10 +170,13 @@ RBAst2RAAst >> visitMethodNode: methodNode [
 					| arg keyword argDef |
 					keyword := RAKeywordDefinition new.
 					keyword name: each asString.
-					argDef := RAArgumentDefinition new.
+					methodNode arguments ifNotEmpty: [ 
+						argDef := RAArgumentDefinition new.
 					arg := methodNode arguments at: i.
 					argDef name: arg name asString.
 					keyword argument: argDef.
+						 ].
+					
 					keyword ]).
 	method temporaries
 		addAll:

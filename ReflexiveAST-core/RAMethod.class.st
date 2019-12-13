@@ -31,6 +31,17 @@ RAMethod >> arguments [
 	^ keywords collect: [ :each | each argument ]
 ]
 
+{ #category : #'rbast-polymorphic' }
+RAMethod >> body [
+	^ self statements
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMethod >> compilationContext [
+	^ Smalltalk compiler compilationContextClass new
+		class: (owningClass originClass ifNil: [ UndefinedClass ])
+]
+
 { #category : #accessing }
 RAMethod >> hasArguments [
 	^ self arguments size > 1
@@ -49,6 +60,16 @@ RAMethod >> initialize [
 { #category : #accessing }
 RAMethod >> keywords [
 	^ keywords
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMethod >> lastIsReturn [ 
+	^ self statements last isReturn 
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMethod >> methodProperties [
+	^ nil
 ]
 
 { #category : #accessing }
@@ -74,9 +95,34 @@ RAMethod >> owningClass: aClass [
 	owningClass := aClass
 ]
 
+{ #category : #'rbast-polymorphic' }
+RAMethod >> pragmas [
+	^ #()
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMethod >> primitiveFromPragma [
+	^ IRPrimitive null
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMethod >> scope [
+	^ self
+]
+
 { #category : #accessing }
 RAMethod >> statements [
 	^ statements
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMethod >> tempVarNames [
+	^ self temporaries collect: [ :temp | temp name ].
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMethod >> tempVector [
+	^ self temporaries 
 ]
 
 { #category : #accessing }
