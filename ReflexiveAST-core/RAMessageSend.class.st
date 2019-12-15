@@ -15,7 +15,7 @@ RAMessageSend >> acceptVisitor: anAstVisitor [
 
 { #category : #accessing }
 RAMessageSend >> arguments [
-	^ keywords collect: [ :k | k expression ]
+	^ (keywords collect: [ :k | k expression ]) reject: [ :e | e isNil ]
 ]
 
 { #category : #initialization }
@@ -26,6 +26,11 @@ RAMessageSend >> initialize [
 { #category : #accessing }
 RAMessageSend >> isBinary [
 	^ false
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMessageSend >> isSuperSend [
+	^ self receiver isVariable and: [ self receiver name = 'super' ]
 ]
 
 { #category : #accessing }
@@ -41,4 +46,9 @@ RAMessageSend >> receiver [
 { #category : #accessing }
 RAMessageSend >> receiver: anObject [
 	receiver := anObject
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMessageSend >> selector [
+	^ keywords inject: '' into: [ :res :each | res, each name ]
 ]

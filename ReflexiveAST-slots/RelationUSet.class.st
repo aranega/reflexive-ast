@@ -48,6 +48,11 @@ RelationUSet >> initializeOwner: anObject slot: aToManyAssociation [
 	set := Set new
 ]
 
+{ #category : #accessing }
+RelationUSet >> innerCollection [
+	^ set
+]
+
 { #category : #internal }
 RelationUSet >> inverseAdd: anObject [
 

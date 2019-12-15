@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 RAPseudoVariable >> acceptVisitor: aVisitor [
-	^ aVisitor visitPseudoVariable: self
+	^ aVisitor visitPseudoVariable:  self
 ]
 
 { #category : #accessing }

@@ -10,6 +10,16 @@ RAStatement >> isBlock [
 ]
 
 { #category : #testing }
+RAStatement >> isCascade [
+	^ false
+]
+
+{ #category : #testing }
 RAStatement >> isReturn [
+	^ false
+]
+
+{ #category : #testing }
+RAStatement >> isVariable [
 	^ false
 ]

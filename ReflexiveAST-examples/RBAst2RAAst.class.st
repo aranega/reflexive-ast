@@ -203,7 +203,7 @@ RBAst2RAAst >> visitReturnNode: messageNode [
 
 { #category : #visiting }
 RBAst2RAAst >> visitSelfNode: selfNode [
-	^ RAPseudoVariable new name: 'self'
+	^ RASelf new
 ]
 
 { #category : #visiting }

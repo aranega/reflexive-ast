@@ -91,6 +91,10 @@ RABaseVisitor >> visitSelector: selector [
 ]
 
 { #category : #visiting }
+RABaseVisitor >> visitSelf: selfVar [
+]
+
+{ #category : #visiting }
 RABaseVisitor >> visitString: str [
 ]
 

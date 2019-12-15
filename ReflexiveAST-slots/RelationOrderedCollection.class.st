@@ -53,6 +53,11 @@ RelationOrderedCollection >> initializeOwner: anObject slot: aToManyAssociation 
 	set := OrderedCollection new
 ]
 
+{ #category : #removing }
+RelationOrderedCollection >> innerCollection [
+	^ set
+]
+
 { #category : #adding }
 RelationOrderedCollection >> insert: anObject at: index [
 
@@ -73,6 +78,11 @@ RelationOrderedCollection >> inverseAdd: anObject [
 RelationOrderedCollection >> inverseRemove: anObject [
 
 	^set remove: anObject
+]
+
+{ #category : #removing }
+RelationOrderedCollection >> last [
+	^ set last
 ]
 
 { #category : #removing }
