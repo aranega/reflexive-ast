@@ -29,6 +29,16 @@ RAMessageSend >> isBinary [
 ]
 
 { #category : #'rbast-polymorphic' }
+RAMessageSend >> isCascaded [
+	^ false
+]
+
+{ #category : #'rbast-polymorphic' }
+RAMessageSend >> isInlined [
+	^ false
+]
+
+{ #category : #'rbast-polymorphic' }
 RAMessageSend >> isSuperSend [
 	^ self receiver isVariable and: [ self receiver name = 'super' ]
 ]

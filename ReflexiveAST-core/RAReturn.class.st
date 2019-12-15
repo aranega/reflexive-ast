@@ -26,3 +26,8 @@ RAReturn >> expression: anObject [
 RAReturn >> isReturn [
 	^ true
 ]
+
+{ #category : #accessing }
+RAReturn >> value [
+	^ expression
+]
