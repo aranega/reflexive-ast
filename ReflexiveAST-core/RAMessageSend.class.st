@@ -18,6 +18,11 @@ RAMessageSend >> arguments [
 	^ (keywords collect: [ :k | k expression ]) reject: [ :e | e isNil ]
 ]
 
+{ #category : #accessing }
+RAMessageSend >> hasArguments [
+	^ self arguments isNotEmpty 
+]
+
 { #category : #initialization }
 RAMessageSend >> initialize [
 	super initialize.

@@ -14,6 +14,11 @@ RAAssignment >> acceptVisitor: anAstVisitor [
 ]
 
 { #category : #accessing }
+RAAssignment >> display [
+	^ '{1} := {2}' format: { variable display. expression display }
+]
+
+{ #category : #accessing }
 RAAssignment >> expression [
 	^ expression
 ]
