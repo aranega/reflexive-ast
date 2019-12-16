@@ -99,6 +99,10 @@ RABaseVisitor >> visitString: str [
 ]
 
 { #category : #visiting }
+RABaseVisitor >> visitSuper: superVar [
+]
+
+{ #category : #visiting }
 RABaseVisitor >> visitTempDefinition: tempDefinition [
 ]
 

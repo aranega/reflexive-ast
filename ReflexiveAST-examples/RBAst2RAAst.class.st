@@ -19,16 +19,14 @@ RBAst2RAAst class >> new: aWorld [
 
 { #category : #visiting }
 RBAst2RAAst >> createVariableUse: aVariable [
-	| varCollection varUse definition |
+	| varCollection definition |
 	varCollection := (currentScope
 		flatCollect: [ :e | e allAccessibleArgAndTemp ])
 		select: [ :each | each name = aVariable name ].
 	varCollection ifNotEmpty: [ ^ (varCollection at: 1) createUse ].
 	owningClass ifNil: [ ^ nil ].
-	varUse := RAInstVarUse new.
 	definition := owningClass createOrGetInstVarNamed: aVariable name.
-	varUse reference: definition.
-	^ varUse
+	^ definition createUse
 ]
 
 { #category : #visiting }
