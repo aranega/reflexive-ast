@@ -79,6 +79,18 @@ RAAstTreePresenter >> subGroupForTypeMenu: slot forGroup: group [
 				register:
 					(RACreateSubNode new
 						owner: self selectedNode;
-						type: sub) asSpecCommand ].
+						type: sub;
+						forSlot: slot;
+						presenter: self) asSpecCommand ].
 	^ group
+]
+
+{ #category : #initialization }
+RAAstTreePresenter >> updateView [
+	self update.
+]
+
+{ #category : #initialization }
+RAAstTreePresenter >> whenUpdatedDo: aBlock [
+	innerTable whenTreeUpdated: aBlock
 ]

@@ -3,10 +3,27 @@ Class {
 	#superclass : #CmCommand,
 	#instVars : [
 		'owner',
-		'type'
+		'type',
+		'slot',
+		'presenter'
 	],
 	#category : #'ReflexiveAST-UI'
 }
+
+{ #category : #executing }
+RACreateSubNode >> execute [
+	| instance |
+	instance := type new.
+	slot isMany
+		ifTrue: [ (slot read: owner) add: instance ]
+		ifFalse: [ slot write: owner to: instance ].
+	presenter updateView
+]
+
+{ #category : #executing }
+RACreateSubNode >> forSlot: aSlot [
+	slot := aSlot
+]
 
 { #category : #initialization }
 RACreateSubNode >> initialize [
@@ -17,6 +34,11 @@ RACreateSubNode >> initialize [
 { #category : #initialization }
 RACreateSubNode >> owner: aNode [
 	owner := aNode
+]
+
+{ #category : #initialization }
+RACreateSubNode >> presenter: aPresenter [
+	presenter := aPresenter
 ]
 
 { #category : #initialization }

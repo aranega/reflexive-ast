@@ -112,7 +112,7 @@ RAMethod >> scope [
 
 { #category : #accessing }
 RAMethod >> selector [
-	^ keywords inject: '' into: [ :res :each | res, each name ]
+	^ keywords inject: '' into: [ :res :each | res, each name asString ]
 ]
 
 { #category : #accessing }
