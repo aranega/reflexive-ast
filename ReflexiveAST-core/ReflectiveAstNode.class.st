@@ -30,7 +30,7 @@ ReflectiveAstNode >> children [
 		do: [ :slot | 
 			((slot isKindOf: ReferenceRelationSlot) and: [ slot isContainment ])
 				ifTrue: [ slot isMany
-						ifTrue: [ children addAll: (slot read: self) ]
+						ifTrue: [ children addAll: ((slot read: self) select: #isNotNil) ]
 						ifFalse: [ | elem |
 							elem := slot read: self.
 							elem ifNotNil: [ children add: elem ] ] ] ].

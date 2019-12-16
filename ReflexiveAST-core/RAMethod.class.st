@@ -111,6 +111,11 @@ RAMethod >> scope [
 ]
 
 { #category : #accessing }
+RAMethod >> selector [
+	^ keywords inject: '' into: [ :res :each | res, each name ]
+]
+
+{ #category : #accessing }
 RAMethod >> statements [
 	^ statements
 ]
