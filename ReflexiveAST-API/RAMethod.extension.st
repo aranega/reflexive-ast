@@ -32,6 +32,11 @@ RAMethod >> assign: aName to: anExpression  position: index [
 ]
 
 { #category : #'*ReflexiveAST-API' }
+RAMethod >> isMethod [
+	^ true
+]
+
+{ #category : #'*ReflexiveAST-API' }
 RAMethod >> statement: anExpression [
 	statements add: anExpression
 ]

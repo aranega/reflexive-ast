@@ -13,8 +13,35 @@ ReflectiveAstNode >> acceptVisitor: aVisitor [
 ]
 
 { #category : #accessing }
+ReflectiveAstNode >> allAccessibleArgAndTemp [
+	^ self allAccessibleArguments , self allAccessibleTemporaries 
+]
+
+{ #category : #accessing }
+ReflectiveAstNode >> allAccessibleArguments [
+	^ self allParentScopes flatCollect: [ :each | each arguments  ]
+]
+
+{ #category : #accessing }
+ReflectiveAstNode >> allAccessibleTemporaries [
+	^ self allParentScopes flatCollect: [ :each | each temporaries ]
+]
+
+{ #category : #accessing }
 ReflectiveAstNode >> allChildren [
 	^ self children, (self children flatCollect: [ :each | each allChildren ]). 
+]
+
+{ #category : #accessing }
+ReflectiveAstNode >> allParentScopes [
+	^ {self} , self allParents
+		select: [ :e | e isMethod or: [ e isBlock ] ]
+]
+
+{ #category : #accessing }
+ReflectiveAstNode >> allParents [
+	self parent ifNil: [ ^ #() ].
+	^ {self parent} , self parent allParents
 ]
 
 { #category : #accessing }
@@ -42,6 +69,11 @@ ReflectiveAstNode >> initialize [
 	
 	self class initializeSlots: self.
 	super initialize.
+]
+
+{ #category : #accessing }
+ReflectiveAstNode >> isMethod [ 
+	^ false
 ]
 
 { #category : #accessing }

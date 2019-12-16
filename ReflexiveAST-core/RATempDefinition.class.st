@@ -12,6 +12,11 @@ RATempDefinition >> acceptVisitor: anAstVisitor [
 	^ anAstVisitor visitTempDefinition: self
 ]
 
+{ #category : #accessing }
+RATempDefinition >> createUse [
+	^ RATempUse new reference: self
+]
+
 { #category : #initialization }
 RATempDefinition >> initialize [
 	super initialize.

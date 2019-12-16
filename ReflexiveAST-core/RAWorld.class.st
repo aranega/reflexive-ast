@@ -22,6 +22,7 @@ RAWorld >> findOrAddClass: aClass [
 			cls := RAClass new.
 			cls name: aClass name.
 			cls originClass: aClass.
+			"cls initInstVarsFromOriginalClass."
 			classes add: cls.
 			^ cls ].
 	^ subresult at: 1

@@ -19,26 +19,11 @@ RBAst2RAAst class >> new: aWorld [
 
 { #category : #visiting }
 RBAst2RAAst >> createVariableUse: aVariable [
-	| varCollection varUse scope definition |
-	scope := currentScope top.
-	aVariable isBlockVar
-		ifTrue: [ varUse := RATempUse new.
-			varCollection := scope temporaries
-				select: [ :each | each name = aVariable name ].
-			varCollection
-				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
-	aVariable isTemp
-		ifTrue: [ varUse := RATempUse new.
-			varCollection := scope temporaries
-				select: [ :each | each name = aVariable name ].
-			varCollection
-				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
-	aVariable isArgument
-		ifTrue: [ varUse := RAArgumentUse new.
-			varCollection := self extractAccessibleArguments
-				select: [ :each | each name = aVariable name ].
-			varCollection
-				ifNotEmpty: [ ^ varUse reference: (varCollection at: 1) ] ].
+	| varCollection varUse definition |
+	varCollection := (currentScope
+		flatCollect: [ :e | e allAccessibleArgAndTemp ])
+		select: [ :each | each name = aVariable name ].
+	varCollection ifNotEmpty: [ ^ (varCollection at: 1) createUse ].
 	owningClass ifNil: [ ^ nil ].
 	varUse := RAInstVarUse new.
 	definition := owningClass createOrGetInstVarNamed: aVariable name.

@@ -36,6 +36,19 @@ RAClass >> createOrGetInstVarNamed: aName [
 	^ subresult at: 1
 ]
 
+{ #category : #accessing }
+RAClass >> initInstVarsFromOriginalClass [
+	instVars
+		addAll:
+			(originClass slots
+				collect: [ :ivar | 
+					| ivdef |
+					ivdef := RAInstVarDefinition new.
+					ivdef name: ivar name.
+					ivar originSlot: ivar.
+					ivdef ])
+]
+
 { #category : #initialization }
 RAClass >> initialize [
 	super initialize.

@@ -13,6 +13,11 @@ RAArgumentDefinition >> acceptVisitor: anAstVisitor [
 	^ anAstVisitor visitArgumentDefinition: self
 ]
 
+{ #category : #accessing }
+RAArgumentDefinition >> createUse [
+	^ RAArgumentUse new reference: self
+]
+
 { #category : #initialization }
 RAArgumentDefinition >> initialize [
 	super initialize.

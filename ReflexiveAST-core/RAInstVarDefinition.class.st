@@ -15,6 +15,11 @@ RAInstVarDefinition >> acceptVisitor: anAstVisitor [
 ]
 
 { #category : #initialization }
+RAInstVarDefinition >> createUse [
+	^ RAInstVarUse new reference: self
+]
+
+{ #category : #initialization }
 RAInstVarDefinition >> initialize [
 	super initialize.
 ]

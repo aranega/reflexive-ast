@@ -28,7 +28,7 @@ RAMethod >> allOwnedBlocks [
 
 { #category : #accessing }
 RAMethod >> arguments [
-	^ keywords collect: [ :each | each argument ]
+	^ (keywords collect: [ :each | each argument ]) select: #isNotNil
 ]
 
 { #category : #'rbast-polymorphic' }
