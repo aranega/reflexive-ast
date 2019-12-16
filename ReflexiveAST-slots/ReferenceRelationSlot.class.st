@@ -135,6 +135,11 @@ ReferenceRelationSlot >> isContainment [
 ]
 
 { #category : #testing }
+ReferenceRelationSlot >> isReferenceRelationSlot [
+	^ true
+]
+
+{ #category : #testing }
 ReferenceRelationSlot >> isToOneSlot [
 
 	^false
